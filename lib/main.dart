@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bank/ui/login_screen.dart';
 
 void main () {
-  runApp(const Bank());
+  runApp(const Bank()); // iniciamos o app
 }
 
-class Bank extends StatelessWidget {
-  const Bank ({super.key});
+class Bank extends StatelessWidget { // criando uma classe chamada bank 
+  const Bank ({super.key}); // widget constante com id unico
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: LoginScreen(),
+  Widget build(BuildContext context) { // desenhar a tela 
+    return MaterialApp( // estrutura base 
+      home: LoginScreen(), // primeira tela de login 
     );
   }
 }
