@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> refreshGetAll() async {
     setState(() {
-    _futureGetAll = AccountService().getAll();
+      _futureGetAll = AccountService().getAll();
     });
   }
 
@@ -25,46 +25,57 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.lightGray,
         title: Text("Sistema de gestão de contas"),
-          actions: [
-           IconButton(onPressed: (){
+        actions: [
+          IconButton(
+            onPressed: () {
               Navigator.pushReplacementNamed(context, "login");
-            }, icon: Icon(Icons.logout), 
-           )
-         ],
+            },
+            icon: Icon(Icons.logout),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColors.orange,
+        child: 
+          Icon(Icons.add, color:
+           Colors.black,
+          ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: RefreshIndicator (
+        child: RefreshIndicator(
           onRefresh: refreshGetAll,
-          child: FutureBuilder(future: _futureGetAll,
-           builder:(context, snapshot) {
-            switch (snapshot.connectionState){ 
-              
-              case ConnectionState.none:
-                return Center(child: CircularProgressIndicator(),);
-          
-              case ConnectionState.waiting:
-                return Center(child: CircularProgressIndicator(),);
-          
-              case ConnectionState.active:
-                return Center(child: CircularProgressIndicator(),);
-          
-              case ConnectionState.done:
-                if (snapshot.data == null || snapshot.data!.isEmpty){
-                  return const Center(child: Text("Nenhuma conta recebida"),);
-                } else {
-                  List<Account> listAccounts = snapshot.data!;
-                  return ListView.builder(
-                    itemCount: listAccounts.length,
-                    itemBuilder: (context, index) {
-                      return AccountWidget(account: listAccounts[index]);
-                    },
-                  );
-                }
-            }
-          }, ),
+          child: FutureBuilder(
+            future: _futureGetAll,
+            builder: (context, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.none:
+                  return Center(child: CircularProgressIndicator());
+
+                case ConnectionState.waiting:
+                  return Center(child: CircularProgressIndicator());
+
+                case ConnectionState.active:
+                  return Center(child: CircularProgressIndicator());
+
+                case ConnectionState.done:
+                  if (snapshot.data == null || snapshot.data!.isEmpty) {
+                    return const Center(child: Text("Nenhuma conta recebida"));
+                  } else {
+                    List<Account> listAccounts = snapshot.data!;
+                    return ListView.builder(
+                      itemCount: listAccounts.length,
+                      itemBuilder: (context, index) {
+                        return AccountWidget(account: listAccounts[index]);
+                      },
+                    );
+                  }
+              }
+            },
+          ),
         ),
-      )
+      ),
     );
   }
 }
