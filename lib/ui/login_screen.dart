@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bank/ui/styles/colors.dart';
 
 class LoginScreen extends StatelessWidget { // classe loginScreen
   const LoginScreen({super.key}); // constante com id unico
@@ -51,7 +52,7 @@ class LoginScreen extends StatelessWidget { // classe loginScreen
                       Navigator.pushReplacementNamed(context, "home");
                     },
                     style: ButtonStyle(
-                      backgroundColor: WidgetStatePropertyAll(Color.fromARGB(255, 255, 177, 21))
+                      backgroundColor: WidgetStatePropertyAll(AppColors.orange)
                     ),
                      child: Text(
                       "Entrar",
