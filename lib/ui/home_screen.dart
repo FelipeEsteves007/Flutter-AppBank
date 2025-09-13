@@ -3,6 +3,7 @@ import 'package:flutter_bank/models/account.dart';
 import 'package:flutter_bank/services/account_service.dart';
 import 'package:flutter_bank/ui/styles/colors.dart';
 import 'package:flutter_bank/ui/widgets/account_widget.dart';
+import 'package:flutter_bank/ui/widgets/add_account_modal.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -35,7 +36,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(context: 
+           context,
+           isScrollControlled: true,
+           builder: (context) {
+            return AddAccountModal();
+          },
+        );
+      },
         backgroundColor: AppColors.orange,
         child: 
           Icon(Icons.add, color:
