@@ -1,0 +1,10 @@
+# Força o GitHub a mostrar Dart como principal
+*.dart linguist-detectable=true
+
+# Ignora arquivos nativos que o Flutter cria automaticamente
+*.cpp linguist-detectable=false
+*.h linguist-detectable=false
+*.java linguist-detectable=false
+*.kt linguist-detectable=false
+*.m linguist-detectable=false
+*.swift linguist-detectable=false
